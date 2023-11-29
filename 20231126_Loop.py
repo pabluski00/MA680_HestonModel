@@ -24,7 +24,7 @@ kappa = 5
 theta = 0.05
 xi = 0.5
 rho = -0.8
-h_basic = 1 / 1000
+h_basic = 1 / 250
 #h_basic2 = 1 / 1890*6
 
 sample_numbers = [1 * 0.1**i for i in range(-1,1)]
@@ -76,8 +76,8 @@ list_100_L = [0]*100
 
 for i in range(100):
 
-    iteration = loop_function(iter=10000,S_0 =100,v_0 =0.05,r=0.1,
-                           kappa=15,theta=0.1,xi=0.4,
+    iteration = loop_function(iter=100,S_0 =100,v_0 =0.05,r=0.1,
+                           kappa=10,theta=0.1,xi=0.4,
                            rho=-0.8, h=h_basic, variance="None")
 
     list_100_S[i] = iteration[1][-1]

@@ -168,7 +168,7 @@ scen2a2_V = producing_graphs(x_feature=scenario_2a2[0], y_feature=scenario_2a2[2
 
 
 
-scenario_2b2 = loop_function(iter=1890*6,S_0 =100,v_0 =0.05,r=0.1,
+scenario_2b2 = loop_function(iter=1875,S_0 =100,v_0 =0.05,r=0.1,
                            kappa=10,theta=0.1,xi=0.4,
                            rho=-0.8, h=h_basic)
 scen2b2_S = producing_graphs(x_feature=scenario_2b2[0], y_feature=scenario_2b2[1],
