@@ -27,13 +27,13 @@ print(sample_numbers)
 S_th = S_0
 v_th = v_0 
 
-def loop_function(iter, S_0,v_0,r,kappa,theta,xi,rho,h, variance):
+def loop_function(iter, S_0,v_0,r,kappa,theta,xi,rho,h, variance, seed_function):
 
     S_th_list = [0]*iter
     v_th_list = [0]*iter
     time = range(iter)
 
-    random.seed(1)
+    random.seed(seed_function)
     Z_1_list = random.sample(range_to_sample_from, iter)
     Z_2_list = random.sample(range_to_sample_from, iter)
 
@@ -89,37 +89,21 @@ def producing_graphs(x_feature, y_feature, title, subtitle, colour, x_axis_name,
     plt.show() # could use plt.close()
 
 
+overall_seed = 2
 
 
-"""
-scenario_2b2a = loop_function(iter=1890*6,S_0 =100,v_0 =0.05,r=0.1,
+scenario_2b2b_ft = loop_function(iter=252*10,S_0 =100,v_0 =0.05,r=0.1,
                            kappa=0.01,theta=0.1,xi=0.4,
-                           rho=-0.8, h=h_basic, variance="None")
-scen2b2a_V = producing_graphs(x_feature=scenario_2b2a[0], y_feature=scenario_2b2a[2],
-                           title="Heston Model - Variance", subtitle="Scenario 2b - None - T=11340", colour="blue", 
+                           rho=-0.8, h=h_basic, variance="full_truncation", 
+                           seed_function = overall_seed)
+scenario_2b2b_re = loop_function(iter=252*10,S_0 =100,v_0 =0.05,r=0.1,
+                           kappa=0.01,theta=0.1,xi=0.4,
+                           rho=-0.8, h=h_basic, variance="reflection", 
+                           seed_function = overall_seed)
+
+scen2b2b_V = producing_graphs(x_feature=scenario_2b2b_ft[0], y_feature=scenario_2b2b_ft[2],
+                           title="Heston Model - Variance", subtitle="Scenario 2b - Full truncation - T=2520", colour="blue", 
                            y_axis_name="Variance", x_axis_name= "time")
-"""
-                           
-
-"""
-scenario_2b2b = loop_function(iter=1890*6,S_0 =100,v_0 =0.05,r=0.1,
-                           kappa=0.01,theta=0.1,xi=0.4,
-                           rho=-0.8, h=h_basic, variance="full_truncation")
-scen2b2b_S = producing_graphs(x_feature=scenario_2b2b[0], y_feature=scenario_2b2b[1],
-                           title="Heston Model - Stock price", subtitle="Scenario 2b - Full truncation -  T=11340", colour="blue", 
-                           y_axis_name="Stock price", x_axis_name= "time")
-scen2b2b_V = producing_graphs(x_feature=scenario_2b2b[0], y_feature=scenario_2b2b[2],
-                           title="Heston Model - Variance", subtitle="Scenario 2b - Full truncation - T=11340", colour="blue", 
-                           y_axis_name="Variance", x_axis_name= "time")
-"""
-
-
-scenario_2b2b = loop_function(iter=1890,S_0 =100,v_0 =0.05,r=0.1,
-                           kappa=0.01,theta=0.1,xi=0.4,
-                           rho=-0.8, h=h_basic, variance="reflection")
-scen2b2b_S = producing_graphs(x_feature=scenario_2b2b[0], y_feature=scenario_2b2b[1],
-                           title="Heston Model - Stock price", subtitle="Scenario 2b - Reflection -  T=11340", colour="blue", 
-                           y_axis_name="Stock price", x_axis_name= "time")
-scen2b2b_V = producing_graphs(x_feature=scenario_2b2b[0], y_feature=scenario_2b2b[2],
-                           title="Heston Model - Variance", subtitle="Scenario 2b - Reflection - T=11340", colour="blue", 
+scen2b2b_V = producing_graphs(x_feature=scenario_2b2b_re[0], y_feature=scenario_2b2b_re[2],
+                           title="Heston Model - Variance", subtitle="Scenario 2b - Reflection - T=2520", colour="blue", 
                            y_axis_name="Variance", x_axis_name= "time")
