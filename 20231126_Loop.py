@@ -42,8 +42,8 @@ def loop_function(iter, S_0,v_0,r,kappa,theta,xi,rho,h, variance):
     Z_2_list = random.sample(range_to_sample_from, iter)
 
     for i in range(iter):
-        Z_1 = Z_1_list[iter]
-        Z_2 = Z_2_list[iter]
+        Z_1 = Z_1_list[i]
+        Z_2 = Z_2_list[i]
         print("Values ", Z_1, Z_2)
 
         Z_v = Z_1
